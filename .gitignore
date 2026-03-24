@@ -36,3 +36,20 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# ======================
+# Allure
+# ======================
+allure-results/
+allure-report/
+
+# ======================
+# Playwright
+# ======================
+playwright-report/
+node_modules/
+
+# ======================
+# Logs
+# ======================
+*.log
