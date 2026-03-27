@@ -19,6 +19,8 @@ public class Hooks {
     public void setUp() {
         boolean isCI = System.getenv("CI") != null;
 
+        playwright = Playwright.create();
+        
         browser = playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
                         .setHeadless(isCI) // CI → true
