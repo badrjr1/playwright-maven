@@ -7,6 +7,8 @@ import com.microsoft.playwright.Playwright;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
+import java.util.Arrays;
+
 public class Hooks {
 
     public static Playwright playwright;
@@ -15,9 +17,13 @@ public class Hooks {
 
     @Before
     public void setUp() {
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
-        page = browser.newPage();
+        boolean isCI = System.getenv("CI") != null;
+
+        browser = playwright.chromium().launch(
+                new BrowserType.LaunchOptions()
+                        .setHeadless(isCI) // CI → true
+                        .setArgs(Arrays.asList("--no-sandbox"))
+        );
     }
 
     @After
