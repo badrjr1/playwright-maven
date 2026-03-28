@@ -26,6 +26,7 @@ public class Hooks {
                         .setHeadless(isCI) // CI → true
                         .setArgs(Arrays.asList("--no-sandbox"))
         );
+        page = browser.newPage();
     }
 
     @After
